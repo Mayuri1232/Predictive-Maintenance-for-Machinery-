@@ -41,14 +41,7 @@ Rotational speed, Torque, and Tool wear account for ~80% of the final model's de
 
 ## Live Demo (Streamlit)
 
-The `app/` folder contains a Streamlit interface where you can input sensor readings and get a live two-stage prediction:
-
-```bash
-cd app
-streamlit run app.py
-```
-
-The app runs the binary model first; the multi-class model only activates if a failure is predicted, and explicitly excludes "No Failure" from its own prediction — since at that point, we already know from Stage 1 that it's failing.
+https://vygxmmehyvzpeytqelexem.streamlit.app/
 
 ## Repository Structure
 
