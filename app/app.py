@@ -87,7 +87,7 @@ if st.button("Predict"):
     st.write(f"Failure probability: {fail_prob:.2%}")
 
     if will_fail:
-        st.error("⚠️ Machine predicted to FAIL")
+        st.error("Machine predicted to FAIL")
 
         # Stage 2: exclude "No Failure" - we already know it's failing,
         # so we want the most likely REAL failure type
