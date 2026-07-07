@@ -2,20 +2,24 @@ import streamlit as st
 import pandas as pd
 from xgboost import XGBClassifier
 import joblib
+import os
 
 st.set_page_config(page_title="Machine Failure Prediction", layout="wide")
 
 
 # --- Load models (cached so this only runs once, not on every click) ---
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 @st.cache_resource
 def load_models():
     binary_model = XGBClassifier()
-    binary_model.load_model('binary_failure_model.json')
+    binary_model.load_model(os.path.join(BASE_DIR, 'binary_failure_model.json'))
 
     multi_model = XGBClassifier()
-    multi_model.load_model('failure_type_model.json')
+    multi_model.load_model(os.path.join(BASE_DIR, 'failure_type_model.json'))
 
-    le = joblib.load('label_encoder.pkl')
+    le = joblib.load(os.path.join(BASE_DIR, 'label_encoder.pkl'))
 
     return binary_model, multi_model, le
 
